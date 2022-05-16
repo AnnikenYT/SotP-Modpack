@@ -11,8 +11,7 @@ jobs:
         type: 'zip'
         filename: 'modpack.zip'
         exclusions: '*.git* .vscode *.ps1'
-    - name: Upload Release
-      uses: ncipollo/release-action@v1
+    - uses: actions/upload-artifact@v3
       with:
-        artifacts: "modpack.zip"
-        token: ${{ secrets.GH_TOKEN }}
+        name: modpack
+        path: modpack.zip
