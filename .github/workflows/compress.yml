@@ -11,7 +11,12 @@ jobs:
         type: 'zip'
         filename: 'modpack.zip'
         exclusions: '*.git* .vscode *.ps1'
-    - uses: actions/upload-artifact@v3
+    - name: Create Release
+      uses: ncipollo/release-action@v1.10.0
       with:
-        name: modpack
-        path: modpack.zip
+        artifacts: 'modpack.zip'
+        allowUpdates: true
+        tag: 'current'
+        replacesArtifacts: true
+        name: 'Current Release'
+        token: ${{ secrets.GITHUB_TOKEN }}
